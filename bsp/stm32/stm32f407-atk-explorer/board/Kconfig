@@ -190,6 +190,21 @@ menu "On-chip Peripheral Drivers"
                 bool "Enable TIM14"
                 default n
         endif
+		
+	menuconfig BSP_USING_CAN
+        bool "Enable CAN"
+        default n
+        select RT_USING_CAN
+        if BSP_USING_CAN
+            config BSP_USING_CAN1
+                bool "Enable CAN1"
+                default n
+
+            config BSP_USING_CAN2
+                bool "Enable CAN2"
+                default n
+
+        endif
 
     menuconfig BSP_USING_PWM
         bool "Enable pwm"

@@ -277,6 +277,7 @@ static rt_err_t timer_start(rt_hwtimer_t *timer, rt_uint32_t t, rt_hwtimer_mode_
     /* set tim cnt */
     __HAL_TIM_SET_COUNTER(tim, 0);
     /* set tim arr */
+		if (t <= 1)	t= 2; //做限幅，解决给零定时器不能启动，canfesival无法初始化的问题
     __HAL_TIM_SET_AUTORELOAD(tim, t - 1);
 
     if (opmode == HWTIMER_MODE_ONESHOT)
